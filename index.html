@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>PufusPie Site</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet"  type="text/css" href="style.css">
+      <script src="script.js"></script>
+  </head>
+
+  <body onload="Loaded()">
+    <header>
+      <h1>PufusPie Site</h1>
+    </header>
+
+    <a href="meteor.html" class="pagelink">Play "The Meteor Game"</a>
+    <div class="contenttablebox">
+      <p>Table of Contents<br>
+      <a href="#hrand">Randomi(s/z)er</a><br>
+      <a href="#hprop">Propability Calculator</a></p>
+    </div>
+
+    <h2 id=hrand>Randomi(s/z)er</h2>
+        <p class="rngParagraph">Random number: <span id="rngTextId" class="rngResultText"></span></p>
+        <button onclick="Rng()" class="rngBtn">Burrito</button>
+        <p class="rngParagraph">Max: <input id="rngTextMaxId" type="number" value="6" class="inputMinMax"></input> Min: <input id="rngTextMinId" type="number" value="1" class="inputMinMax"></input></p>
+        <div class="atkRow">
+          <button onclick="RngAdd()" class="rngBtn">Set Max</button>
+          <button onclick="RngLow()" class="rngBtn">Set Min</button>
+        </div>
+        <p class="rngParagraph">List numbers</p>
+        <p>Count: <input id=listNumId type="number" class="inputNumber"></input> --> <span id=listOfNumsId class="numberListText"></span></p>
+        <button onclick="RngList()" class="rngBtn">Produce</button>
+    </div>
+
+    <h2 id="hprop">Propability Calculator</h2>
+    <div class="propabilityBox">
+      <img src="propability_person.png" alt="Siluette representing chance" class="chancepic">
+      <div class="propCover" id="propCoverId"> </div>
+    </div>
+    <p class="smallVertMarg">LP: <span id="totLpId" class="resultText">?</span> and Rate: <span id="totChId" class="resultText">??</span>%</p>
+    <button onclick="CalcAtk()" class="rngBtn">Calculate</button>
+
+    <div class="atksRow">
+      <p class="smallVertMarg">Victim life points:</p>
+      <input type="number" class="inputNumber" id="lpid">
+    </div>
+
+    <h3>Attacks</h3>
+    <div class="atksRow">
+      <div class="atkBox">
+        <h4>1.</h4>
+        <input type="number" class="inputAtk" id="atk1ap" value="0">
+        <input type="number" class="inputAtk" id="atk1ch" value="100">
+        <input type="number" class="inputAtk" id="atk1cr" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>2.</h4>
+        <input type="number" class="inputAtk" id="atk2ap" value="0">
+        <input type="number" class="inputAtk" id="atk2ch" value="100">
+        <input type="number" class="inputAtk" id="atk2cr" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>3.</h4>
+        <input type="number" class="inputAtk" id="atk3ap" value="0">
+        <input type="number" class="inputAtk" id="atk3ch" value="100">
+        <input type="number" class="inputAtk" id="atk3cr" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>4.</h4>
+        <input type="number" class="inputAtk" id="atk4ap" value="0">
+        <input type="number" class="inputAtk" id="atk4ch" value="100">
+        <input type="number" class="inputAtk" id="atk4cr" value="0">
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+
+body{
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  gap:25%;
+  padding: 3%;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  border: 3px dotted gray;
+}
+p{
+  color: white;
+  font-size: 35px;
+}
+a{
+    /*text-decoration: none;*/
+    color:lightgreen;
+    font-size: 30px;
+}
+li{
+  text-align: left;
+  color: white;
+  font-size: 25px;
+}
+
+h1{
+  border: 3px solid purple;
+  color: lime;
+  text-align: center;
+  font-size: 900%;
+}
+h2{
+  text-align: left;
+  color: lightblue;
+  font-size: 600%;
+  margin-bottom: -1%;
+}
+h3{
+  color: white;
+  font-size: 55px;
+  margin-top:0.5%;
+  margin-bottom:0.5%;
+}
+h4{
+  margin-bottom:1%;
+  margin-top:0.5%;
+  font-size: 200%;
+  color: red;
+  -webkit-text-stroke: 2px black;
+}
+
+
+
+.rngBtn{
+  text-align: left;
+  border: 10px solid blue;
+  padding: 1%;
+  margin: 1%;
+  margin-right: auto;
+  font-size: 200%;
+  border-radius: 15%;
+}
+
+.chancepic{
+  width: 30%;
+  margin-left: 20%;
+}
+
+.inputNumber{
+  width: 10%;
+  margin-top: 0.5%;
+  height: 2%;
+  margin-left: 2%;
+  font-size: 200%;
+}
+
+.inputAtk{
+  width: 95%;
+  margin-top: 1%;
+  font-size: 200%;
+}
+
+.inputNumber{
+  font-size: 100%;
+}
+
+.atkBox{
+  padding: 1%;
+  background-color: green;
+  width: 10%;
+  border-style: solid;
+  border-color: darkblue;
+  margin-right: 0.5%;
+}
+
+.atksRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.propabilityBox{
+  position: relative;
+  margin-right: 20%;
+  border-radius: 5%;
+  border-color: brown;
+}
+
+.propCover{
+  width:30%;
+  height:100%;
+  position: absolute;
+  top: 0%;
+  left:20%;
+  z-index: 10;
+  opacity: 75%;
+}
+
+.smallVertMarg{
+  margin-top:0.5%;
+  margin-bottom:0.5%;
+  font-size: 270%;
+}
+
+.resultText{
+  color: pink;
+  font-size: 150%;
+}
+
+.rngResultText{
+  color: lightgreen;
+  font-size: 200%;
+}
+
+.rngParagraph{
+  font-size: 300%;
+}
+
+.numberListText{
+  font-size: 150%;
+}
+
+.inputMinMax{
+  font-size: 120%;
+  width: 7%;
+}
+
+.settParagraph{
+  font-size: 280%;
+  margin-top:1%;
+  margin-bottom:1%;
+}
+
+.gameTitle{
+  align-self: center;
+  background-color: black;
+  padding: 1%;
+  border-radius: 45%;
+}
+
+.squareDiv{
+  border: 4px solid black;
+  margin-right: auto;
+  background-color: white;
+
+  position: absolute;
+  width: 92px;
+  height: 92px;
+}
+
+#gameField{
+  position: relative;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: */
+  width: 100%;
+  height: 100px;
+  /*border: 3px solid black;*/
+}
+
+.countstext{
+  font-size: 60px;
+}
+
+.pagelink{
+  color:pink;
+  text-align: center;
+  font-size: 60px;
+}
+
+.contenttablebox{
+  padding: 2%;
+  width: 400px;
+  border-style: solid;
+  border-color: darkblue;
+  margin-right: 0.5%;
+  margin-top: 10%;
+  background-color: black;
+}
+
+.keyBtn{
+  text-align: left;
+  border: 10px solid green;
+  padding: 1%;
+  margin: 1%;
+  margin-right: auto;
+  font-size: 300%;
+  border-radius: 20%;
+}
+
+.enterBtn{
+  text-align: left;
+  border: 10px solid red;
+  padding: 1%;
+  margin: 1%;
+  margin-right: auto;
+  font-size: 350%;
+  border-radius: 10%;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>PufusPie Site</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet"  type="text/css" href="style.css">
+      <script src="script.js"></script>
+  </head>
+
+  <body onkeydown="KeySquare(event)"> <!-- onload="UPDATE()"> -->
+    <header>
+      <h1>The Meteor Game</h1>
+    </header>
+
+    <a href="index.html" class="pagelink">Back to main PufusPie Site</a>
+
+    <h2>Explanation</h2>
+    <p>
+      One plays as the meteor and the others as its next victims.<br>
+      During meteor's turn 'click' squares to vanquish players or block their paths.<br>
+      When you have zero attacks to make anymore, press 'enter' to advance to player turn.<br>
+      During players's turns, use 'arrow keys' to pass trough empty squares to hide from the meteor.<br>
+      Press 'enter' to advance to the next players turn until meteor's turn starts again.<br>
+      Players leave trails on the square that were hiding on unless if they are standing still.<br>
+      Players must hide and move unpredictably to attempt not to perish for as long as possible.
+    </p>
+
+    <h2>Game Settings</h2>
+        <p class="settParagraph">Width: <input id="settWidthId" type="number" value="7" class="inputMinMax"></input> Height: <input id="settHeightId" type="number" value="7" class="inputMinMax"></input></p>
+        <p class="settParagraph">Movement: <input id="settMovementId" type="number" value="3" class="inputMinMax"></input> Attacks: <input id="settHitsId" type="number" value="3" class="inputMinMax"></input></p>
+        <p class="settParagraph">Player Count: <input id="settPCountId" type="number" value="3" class="inputMinMax"></input></p>
+        <button onclick="ApplySett()" class="rngBtn" tabindex="-1">Apply settings</button>
+    </div>
+
+    <h2 class="gameTitle">Meteor Game</h2>
+    <!--<input class="inputMinMax" onkeydown="KeySquare(event)"></input> -->
+    <p class="countstext">Turn: <span id="countTurnId" class="countstext">Meteor</span><br><span id="countHitsId" class="countstext">Hits: ?</span><br> Dead:<span id="showDeadId" class="countstext"></span></p>
+
+    <button onclick="CreateField()" class="rngBtn">Start</button>
+
+    <div id="gameField">
+        <!-- <div class="squareDiv"></div> -->
+    </div>
+    <div class="atkRow">
+      <button onclick="KeySimulate(37)" class="keyBtn">Left</button>
+      <button onclick="KeySimulate(38)" class="keyBtn">Up</button>
+      <button onclick="KeySimulate(40)" class="keyBtn">Down</button>
+      <button onclick="KeySimulate(39)" class="keyBtn">Right</button>
+      <button onclick="KeySimulate(13)" class="enterBtn">Enter</button>
+    </div>
+  </body>
+</html>
