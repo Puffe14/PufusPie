@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>PufusPie Site</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet"  type="text/css" href="zinq_style.css">
+      <script src="zinq_script.js"></script>
+  </head>
+
+  <body onload="Loaded()">
+    <header>
+      <h1 id="kana">Zelf Inquirer</h1>
+    </header>
+
+    <a href="index.html" class="pagelink">Go back To Main Page</a>
+
+    <div>
+      <h2 id=inquirer_header>Select a file for Zelf to make inquiries from.</h2>
+      <input type="file" name="file" id="inq_file" accept=".txt">
+    </div>
+
+    <button type="button" onclick="listZelfsList()">Show Zelf's current list</button>
+    <button type="button" onclick="resetZelfsList()">Reset Zelf's list</button>
+    <button type="button" onclick="pickQuestion()">Start Zelf's inquiry</button>
+
+    <input type="checkbox" id="checkSwapAB"> Swap answer and question values around </input>
+
+    <div>
+      <h2>Question:</h2>
+      <p id="zquestion">???</p>
+    </div>
+    <div>
+      <h2>Answer:</h2>
+      <input type="text" id="yanswer" oninput="checkForAnswer()">
+    </div>
+    <div>
+      <button type="button" onclick="skipQuestion()">Skip Question</button>
+      <p id="scorep">Score: 0, 0%</p>
+    </div>
+    <button type="button" onclick="debugBtn()">debug</button>
+  </body>
+</html>

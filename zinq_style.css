@@ -1,0 +1,36 @@
+
+body{
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  gap:25%;
+  padding: 3%;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  border: 3px dotted gray;
+}
+p{
+  color: white;
+  font-size: 35px;
+}
+a{
+    /*text-decoration: none;*/
+    color:lightgreen;
+    font-size: 30px;
+}
+button{
+  text-align: left;
+  border: 5px solid green;
+  padding: 1%;
+  margin: 1%;
+  margin-right: auto;
+  font-size: 100%;
+}
