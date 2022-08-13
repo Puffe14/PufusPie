@@ -19,22 +19,29 @@
       <input type="file" name="file" id="inq_file" accept=".txt">
     </div>
 
-    <button type="button" onclick="listZelfsList()">Show Zelf's current list</button>
-    <button type="button" onclick="resetZelfsList()">Reset Zelf's list</button>
-    <button type="button" onclick="pickQuestion()">Start Zelf's inquiry</button>
+    <div>
+      <button type="button" onclick="listZelfsList()">Show Zelf's current list</button>
+      <button type="button" onclick="resetZelfsList()">Reset Zelf's list</button>
+      <button type="button" onclick="pickQuestion()">Start Zelf's inquiry</button>
+    </div>
 
+    <h2>Options</h2>
     <input type="checkbox" id="checkSwapAB"> Swap answer and question values around </input>
+    <input type="checkbox" id="checkShowZelf"> Don't show Zelf </input>
+    <input type="checkbox" id="checkBtnAnswer"> Press a button to confirm your answer </input>
 
     <div>
       <h2>Question:</h2>
       <p id="zquestion">???</p>
     </div>
+    <img src="zelf_face_img.png" alt="the face of a Blue Haired Lib" id="imgZelfFace"></img>
     <div>
       <h2>Answer:</h2>
       <input type="text" id="yanswer" oninput="checkForAnswer()">
     </div>
     <div>
       <button type="button" onclick="skipQuestion()">Skip Question</button>
+      <button type="button" onclick="checkForAnswer()">Answer</button>
       <p id="scorep">Score: 0, 0%</p>
     </div>
     <button type="button" onclick="debugBtn()">debug</button>
