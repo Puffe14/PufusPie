@@ -11,14 +11,20 @@ var ur = 0 //ur ratio
 var ut = 0 //ur total
 
 var checkSAB = ""
+var checkBA = ""
+var checkSZ = ""
+var zface = ""
 
 ///////////////////////////////////////////////
 
 function Loaded(){
-  document.getElementById('kana').style.backgroundColor = "darkblue"
+  //document.getElementById('kana').style.backgroundColor = "darkblue"
   var zquestion = document.getElementById("zquestion")
   var yanswer = document.getElementById("yanswer")
       checkSAB = document.getElementById("checkSwapAB")
+      checkBA = document.getElementById("checkBtnAnswer")
+      checkSZ = document.getElementById("checkShowZelf")
+      zface = document.getElementById("imgZelfFace")
 
   //read and add all lines from txt file to the zelfsList array
   document.getElementById("inq_file").onchange = function() {
@@ -28,14 +34,55 @@ function Loaded(){
     //create the file reader
     var zreader = new FileReader()
         zreader.readAsText(inqFile)
+
     //have the reader read the file and collect the information
     zreader.onload = function(progressEvent){
       console.log(this.result)
+
       //pick out every line
       everyLine = this.result.split('\n')
+
       // add them to zelf's list
       zelfsList = [...zelfsList, ...everyLine]
       zll = zelfsList.length
+
+      //clean out all empty lines and line breaks
+      console.log("removing empty...")
+      for(var i = 0; i < zll; i++){
+        console.log(zelfsList[i])
+        zelfsList[i] = zelfsList[i].replace(/\r?\n|\r/, "")
+        if(zelfsList[i]==""){
+          zelfsList.splice(i,1)
+          i--
+          zll = zelfsList.length
+        }
+      }
+    }
+  }
+
+  checkBA.onclick = function() {
+    if(checkBA.checked == true){
+      yanswer.oninput = ""
+    }
+    else{
+      yanswer.oninput = "checkForAnswer()"
+    }
+  }
+
+  checkSZ.onclick = function() {
+    if(checkSZ.checked == true){
+      //zface.src = ""
+      //zface.alt = ""
+      zface.style.width = "0%"
+      zface.style.heigth = "0%"
+      console.log("face off")
+    }
+    else{
+      //zface.src = "zelf_face_img.png"
+      //zface.alt = "the face of a Blue Haired Lib"
+      zface.style.width = "25%"
+      zface.style.heigth = "25%"
+      console.log("face on")
     }
   }
 }
@@ -44,6 +91,7 @@ function Loaded(){
 
 function listZelfsList(){
   zll = zelfsList.length
+  console.log("Listing Zelf's list...")
 
   for(var i = 0; i < zll; i++){
     console.log(zelfsList[i]+" "+i)
@@ -64,19 +112,25 @@ function resetZelfsList(){
 
 
 function pickQuestion(){
-  //pick a random number dividable by to
-  nrnd =  Math.floor(Math.random()*(zll/2))*2
+  if(zll == 0){
+    zquestion.innerHTML = "My list is empty..."
+    console.log("His list is empty...")
+  }
+  else {
+    //pick a random number dividable by to
+    nrnd =  Math.floor(Math.random()*(zll/2))*2
 
-  if(checkSAB.checked == true){
-    yq = zelfsList[nrnd+1]
-    ya = zelfsList[nrnd].replace(/\r?\n|\r/, "")
+    if(checkSAB.checked == true){
+      yq = zelfsList[nrnd+1]
+      ya = zelfsList[nrnd]
+    }
+    else{
+      yq = zelfsList[nrnd]
+      ya = zelfsList[nrnd+1]
+    }
+    zquestion.innerHTML = yq
+    console.log("Question: "+yq+" "+nrnd)
   }
-  else{
-    yq = zelfsList[nrnd]
-    ya = zelfsList[nrnd+1].replace(/\r?\n|\r/, "")
-  }
-  zquestion.innerHTML = yq
-  console.log("Question: "+yq+" "+nrnd)
 }
 
 
@@ -116,5 +170,5 @@ function skipQuestion(){
 
 
 function debugBtn(){
-  console.log(yanswer.value+" ans---true "+ya+", "+nrnd)
+  console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
 }
