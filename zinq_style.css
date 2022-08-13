@@ -34,3 +34,22 @@ button{
   margin-right: auto;
   font-size: 100%;
 }
+
+h1{
+  border: 3px solid purple;
+  color: lime;
+  text-align: center;
+  font-size: 900%;
+}
+
+.boxydiv{
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 2%;
+  border: 3px solid lightblue;
+}
+
+#imgZelfFace{
+  width: 25%;
+  height: 25%;
+}
