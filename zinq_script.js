@@ -152,7 +152,7 @@ function checkForAnswer(){
     ut = uc+uw
     ur = (Math.floor((uc/ut)*1000))/10
     console.log(uc+"/"+ut+", "+ur+"%")
-    document.getElementById("scorep").innerHTML = "Score: "+ut+"/"+ut+", "+ur+"%"
+    document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
   }
 }
 
@@ -168,6 +168,9 @@ function skipQuestion(){
   }
 }
 
+function showAnswer(){
+  zquestion.innerHTML = "It's: "+ya
+}
 
 function debugBtn(){
   console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
