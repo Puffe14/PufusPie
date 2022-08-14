@@ -34,16 +34,20 @@
       <h2>Question:</h2>
       <p id="zquestion">???</p>
     </div>
+
     <img src="zelf_face_img.png" alt="the face of a Blue Haired Lib" id="imgZelfFace"></img>
     <div>
       <h2>Answer:</h2>
       <input type="text" id="yanswer" oninput="checkForAnswer()">
     </div>
+
     <div>
       <button type="button" onclick="skipQuestion()">Skip Question</button>
       <button type="button" onclick="checkForAnswer()">Answer</button>
+      <button type="button" onclick="showAnswer()">Answer?</button>
       <p id="scorep">Score: 0, 0%</p>
     </div>
+
     <button type="button" onclick="debugBtn()">debug</button>
   </body>
 </html>
