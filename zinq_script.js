@@ -177,3 +177,4 @@ function showAnswer(){
 function debugBtn(){
   console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
 }
+
