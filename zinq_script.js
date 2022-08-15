@@ -52,7 +52,7 @@ function Loaded(){
       console.log("removing empty...")
       for(var i = 0; i < zll; i++){
         console.log(zelfsList[i])
-        zelfsList[i] = zelfsList[i].replace(/\r?\n|\r/, "")
+        zelfsList[i] = zelfsList[i].replace(/(\r\n|\n|\r)/gm,"")
         if(zelfsList[i]==""){
           zelfsList.splice(i,1)
           i--
@@ -177,4 +177,3 @@ function showAnswer(){
 function debugBtn(){
   console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
 }
-
