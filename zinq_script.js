@@ -39,8 +39,10 @@ function Loaded(){
     zreader.onload = function(progressEvent){
       console.log(this.result)
 
+      //turn tabs to line breaks
+      var theFileAsString = this.result.replace(/\t/g, "\n")
       //pick out every line
-      everyLine = this.result.split('\n')
+      everyLine = theFileAsString.split('\n')
 
       // add them to zelf's list
       zelfsList = [...zelfsList, ...everyLine]
