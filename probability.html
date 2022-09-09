@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>PufusPie Site</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet"  type="text/css" href="style.css">
+      <script src="prob_script.js"></script>
+  </head>
+
+  <body onload="Loaded()">
+    <header>
+      <h1>PufusPie Site</h1>
+    </header>
+    <a href="index.html" class="pagelink">Go back To Main Page</a>
+
+    <h2 id="hprob">Probability Calculator</h2>
+    <div class="probabilityBox">
+      <img id ="victimphotoid" src="probability_person.png" alt="Siluette representing chance" class="chancepic">
+      <div class="probCover" id="probCoverId"> </div>
+    </div>
+
+    <p class="smallVertMarg">LP: <span id="totLpId" class="resultText">?</span> and Rate: <span id="totChId" class="resultText">??</span>%</p>
+    <button onclick="CalcAtkOld()" class="rngBtn">Calculate</button>
+    <button onclick="CalcAtkSim()" class="rngBtn">Simulate all</button>
+    <p class="smallVertMarg" id="simulationrestxtid"></p>
+
+    <div id="victiminputdiv">
+      <div class="atksRow">
+        <p class="smallVertMarg">Victim life points:</p>
+        <input type="number" class="inputNumber" id="lpid">
+      </div>
+
+      <div class="atksRow">
+        <p class="smallVertMarg">Insert png for victim:</p>
+        <input type="file" id="victiminputid" accept="image/*">
+      </div>
+    </div>
+
+    <h3>Attacks</h3>
+    <div class="atksRow" id="atkplace">
+      <div class="atkBox">
+        <h4>1.</h4>
+        <input type="number" class="inputAtk" id="ap1" value="0">
+        <input type="number" class="inputAtk" id="ch1" value="100">
+        <input type="number" class="inputAtk" id="cr1" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>2.</h4>
+        <input type="number" class="inputAtk" id="ap2" value="0">
+        <input type="number" class="inputAtk" id="ch2" value="100">
+        <input type="number" class="inputAtk" id="cr2" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>3.</h4>
+        <input type="number" class="inputAtk" id="ap3" value="0">
+        <input type="number" class="inputAtk" id="ch3" value="100">
+        <input type="number" class="inputAtk" id="cr3" value="0">
+      </div>
+      <div class="atkBox">
+        <h4>4.</h4>
+        <input type="number" class="inputAtk" id="ap4" value="0">
+        <input type="number" class="inputAtk" id="ch4" value="100">
+        <input type="number" class="inputAtk" id="cr4" value="0">
+      </div>
+    </div>
+  </body>
+</html>
