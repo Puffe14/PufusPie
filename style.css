@@ -71,8 +71,9 @@ h4{
 }
 
 .chancepic{
-  width: 30%;
-  margin-left: 20%;
+  width: 400px;
+  height: 400px;
+  align-self: center;
 }
 
 .inputNumber{
@@ -108,19 +109,20 @@ h4{
   align-items: center;
 }
 
-.propabilityBox{
+.probabilityBox{
   position: relative;
-  margin-right: 20%;
+  align-self: center;
   border-radius: 5%;
   border-color: brown;
+  margin: 20px;
 }
 
-.propCover{
+.probCover{
   width:30%;
   height:100%;
   position: absolute;
   top: 0%;
-  left:20%;
+  left:0%;
   z-index: 10;
   opacity: 75%;
 }
@@ -230,6 +232,25 @@ h4{
 
 
 
+.checkInputBox{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.boxBtn{
+  text-align: left;
+  border: 5px solid purple;
+  padding: 1%;
+  margin: 1%;
+  margin-right: auto;
+  font-size: 100%;
+  border-radius: 15%;
+}
+
+.inputSmall{
+  width: 30px;
+  margin: 10px;
+}
 
 
 #victiminputdiv{
@@ -237,7 +258,7 @@ h4{
 
   position: relative;
   width: 100%;
-  height: 126px;
+  padding-left: 20px;
 
   background: #EEB5F8;
   border: 3px solid #800080;

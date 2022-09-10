@@ -20,48 +20,46 @@
     </div>
 
     <p class="smallVertMarg">LP: <span id="totLpId" class="resultText">?</span> and Rate: <span id="totChId" class="resultText">??</span>%</p>
-    <button onclick="CalcAtkOld()" class="rngBtn">Calculate</button>
-    <button onclick="CalcAtkSim()" class="rngBtn">Simulate all</button>
+
+    <div class="atksRow">
+      <button onclick="CalcAtkSim()" class="rngBtn">Simulate <span id="numofsimsid"></span> futures</button>
+      <button onclick="CalcAtkOld()" class="rngBtn">Calculate Simple</button>
+    </div>
     <p class="smallVertMarg" id="simulationrestxtid"></p>
 
     <div id="victiminputdiv">
       <div class="atksRow">
         <p class="smallVertMarg">Victim life points:</p>
-        <input type="number" class="inputNumber" id="lpid">
+        <input type="number" class="inputNumber" id="lpid" value="0">
       </div>
 
       <div class="atksRow">
         <p class="smallVertMarg">Insert png for victim:</p>
         <input type="file" id="victiminputid" accept="image/*">
       </div>
+      <div class="atksRow">
+        <p class="smallVertMarg">Number of simulations:</p>
+        <input type="number" id="simulationinputid" class="inputNumber" value="1000">
+      </div>
+    </div>
+
+    <div class="checkInputBox">
+      <input type="checkbox" id="check2RNid">2RN</input>
+      <input type="checkbox" id="check250id">2RN when ≥ 50%</input>
+      <input type="number" id="inputCrtmltid" value="3" class="inputSmall">Critical multiplier</input>
     </div>
 
     <h3>Attacks</h3>
+
+    <div class="atksRow">
+      <button onclick="AddBox(0,100,0)" class="boxBtn">Add a box</button>
+      <button onclick="AddDouble()" class="boxBtn">Double</button>
+      <button onclick="AddQuadruple()" class="boxBtn">Quadruple</button>
+      <button onclick="ClearBoxes()" class="boxBtn">Clear All</button>
+    </div>
+
     <div class="atksRow" id="atkplace">
-      <div class="atkBox">
-        <h4>1.</h4>
-        <input type="number" class="inputAtk" id="ap1" value="0">
-        <input type="number" class="inputAtk" id="ch1" value="100">
-        <input type="number" class="inputAtk" id="cr1" value="0">
-      </div>
-      <div class="atkBox">
-        <h4>2.</h4>
-        <input type="number" class="inputAtk" id="ap2" value="0">
-        <input type="number" class="inputAtk" id="ch2" value="100">
-        <input type="number" class="inputAtk" id="cr2" value="0">
-      </div>
-      <div class="atkBox">
-        <h4>3.</h4>
-        <input type="number" class="inputAtk" id="ap3" value="0">
-        <input type="number" class="inputAtk" id="ch3" value="100">
-        <input type="number" class="inputAtk" id="cr3" value="0">
-      </div>
-      <div class="atkBox">
-        <h4>4.</h4>
-        <input type="number" class="inputAtk" id="ap4" value="0">
-        <input type="number" class="inputAtk" id="ch4" value="100">
-        <input type="number" class="inputAtk" id="cr4" value="0">
-      </div>
+
     </div>
   </body>
 </html>

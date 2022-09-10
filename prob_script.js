@@ -1,68 +1,122 @@
 
 
-var aps = [0,0,0,0]
-var chs = [0,0,0,0]
-var crs = [0,0,0,0]
+var aps = []
+var chs = []
+var crs = []
 var crmult = 3
 
-totalChance = 0;
-boxcount = 0;
+totalChance = 0
+boxcount = 0
+simCount = 1000
+
+rch = Math.random()*100
+rcr = Math.random()*100
+rn = 0
+
 
 
 function Loaded(){
   atksRowDiv = document.getElementById("atkplace");
-  victimPhotoElmnt = document.getElementById("victimphotoid");
+  vicFoto = document.getElementById("victimphotoid");
   victimInputElmnt = document.getElementById("victiminputid");
+  check2RN = document.getElementById("check2RNid")
+  check250 = document.getElementById("check250id")
+  numOfSimsElmnt =  document.getElementById("numofsimsid")
+  simInputElmnt = document.getElementById("simulationinputid")
+  inputCrtmltElmnt = document.getElementById("inputCrtmltid")
+  numOfSimsElmnt.innerHTML = simCount
+  simInputElmnt.values = simCount
 
-
-  victimInputElmnt.onchange = function() {
+  victimInputElmnt.onchange = function(event) {
     reader = new FileReader()
+    imgFile = event.target.files[0]
+    vicFoto.title = imgFile.name
     console.log("reader anew")
-    reader.readAsDataURL(this.files[0]);
 
-    reader.onload = function (progressEvent) {
-      uploadVictim = reader.result
+    reader.onload = function (event) {
+      uploadVictim = event.target.result
       console.log(victimInputElmnt+" and "+uploadVictim)
-      victimPhotoElmnt.style.backgroundImage = "url(${uploadVictim})"
+      vicFoto.src = uploadVictim
     }
-    console.log(reader.result)
+    reader.readAsDataURL(imgFile)
+    console.log(vicFoto.title)
+  }
+
+
+  check2RN.onclick = function() {
+    if(check2RN.checked == true){
+      rn = 1
+      check250.checked = false
+    }
+    else{
+      rn = 0
+    }
+  }
+
+  check250.onclick = function() {
+    if(check250.checked == true){
+      rn = 2
+      check2RN.checked = false
+    }
+    else{
+      rn = 0
+    }
+  }
+
+  simInputElmnt.onchange = function() {
+    if(simInputElmnt.value > 1000000){console.log("Well it's your device...")}
+    simCount = simInputElmnt.value
+    numOfSimsElmnt.innerHTML = simCount
+  }
+
+  inputCrtmltElmnt.onchange = function() {
+    crmult = inputCrtmltElmnt.value
   }
 }
 
 
 
 function CalcAtkOld() {
-  propCoverElmnt = document.getElementById("probCoverId");
+  collectBoxes()
+  probCoverElmnt = document.getElementById("probCoverId");
   //Calculate total chance of consecutive attacks
-  totalChance = (document.getElementById("ch1").value*0.01)*(document.getElementById("ch2").value*0.01)*(document.getElementById("ch3").value*0.01)*(document.getElementById("ch4").value*0.01);
+  totalChance = 1
+  for(let o = 1; o<=chs.length; o++){
+    totalChance = totalChance*(document.getElementById("ch"+o).value*0.01)
+  }
   chanceElmnt = document.getElementById("totChId");
   if(totalChance>=0.01){chanceElmnt.innerHTML = Math.floor(totalChance*100);}
   else{chanceElmnt.innerHTML = Math.floor(totalChance*1000000)/1000000;}
   //Calculate life points remaining form total attack points
-  totalAp = document.getElementById("ap1").value*1 + document.getElementById("ap2").value*1 + document.getElementById("ap3").value*1 + document.getElementById("ap4").value*1;
+  totalAp = 0
+  for(let p = 1; p<=aps.length; p++){
+    totalAp += (document.getElementById("ap"+p).value*1)
+  }
   deadElmnt = document.getElementById("totLpId");
   lp = document.getElementById("lpid").value*1;
   lpLeft = lp-totalAp;
+  //*************
   if(lpLeft>0){
     deadElmnt.innerHTML = "LP: "+lpLeft;
-    propCoverElmnt.style.backgroundColor = "darkblue";
+    probCoverElmnt.style.backgroundColor = "darkblue";
   }
   else{
     deadElmnt.innerHTML = "Dead";
-    propCoverElmnt.style.backgroundColor = "red";
+    probCoverElmnt.style.backgroundColor = "red";
   }
   console.log(totalAp);
   //Set square on top of image
-  document.getElementById("probCoverId").style.width = totalChance*30+"%";
+  probCoverElmnt.style.width = totalChance*100+"%";
+  //**************
 }
 
 
 //-----------------------------------------------------------------------------
 function CalcAtkSim() {
   deadElmnt = document.getElementById("totLpId");
-  propCoverElmnt = document.getElementById("probCoverId");
+  probCoverElmnt = document.getElementById("probCoverId");
   simTxtElmnt = document.getElementById("simulationrestxtid");
-  collectDefaultBoxes()
+  collectBoxes()
 
   //reset everything when the button is clicked
   hitAp = 0
@@ -83,9 +137,7 @@ function CalcAtkSim() {
 
     // Perform a single simulation of all attacks
     for(let i = 0; i < aps.length; i++){
-      // Set random rolls for hit and critrate
-      rch = Math.random()*100
-      rcr = Math.random()*100
+      rollit(i)
       hitAp = 0
 
       // Add damage if rolls hit
@@ -113,14 +165,6 @@ function CalcAtkSim() {
   //Calculate life points remaining form total attack points
   lp = document.getElementById("lpid").value*1;
   lpLeft = lp-avgAp;
-
-  //Check whether the attack has slain the victim or not
-  if(lpLeft > 0){
-    deadElmnt.innerHTML = "LP: "+lpLeft;
-  }
-  else{
-    deadElmnt.innerHTML = "Dead";
-  }
 
   simAvPos = []
 
@@ -176,9 +220,16 @@ function CalcAtkSim() {
     }
   }
 
+  probCoverElmnt = document.getElementById("probCoverId");
+
   chanceElmnt.innerHTML = killCh
   simTxtElmnt.innerHTML = simText
+  deadElmnt.innerHTML = "Dead?";
+  probCoverElmnt.style.backgroundColor = "red";
   console.log("Avrg: "+avgAp);
+  console.log(totalAp);
+  //Set square on top of image
+  probCoverElmnt.style.width = killCh+"%";
 }
 //-------------------------------------------------------------------------------------------
 
@@ -186,59 +237,102 @@ function CalcAtkSim() {
 
 
 
-function ApplySett(){
-  fieldw = document.getElementById("settWidthId").value*1
-  fieldh = document.getElementById("settHeightId").value*1
-  pmov = document.getElementById("settMovementId").value*1
-  mhit = document.getElementById("settHitsId").value*1
-  pcount = document.getElementById("settPCountId").value*1;
+
+function collectBoxes(){
+  for(let q = 1; q <= boxcount; q++){
+    aps[q-1] = document.getElementById("ap"+q).value*1
+    chs[q-1] = document.getElementById("ch"+q).value*1
+    crs[q-1] = document.getElementById("cr"+q).value*1
+  }
+  console.log("changed all values")
+  console.log(document.getElementById("ap1").value*1)
+  console.log("Aps: "+aps+"Chs: "+chs+"Crs: "+crs)
 }
 
-function CollectFromBoxes() {
-  //Move all boxes to place
-  boxes = document.getElementsByClassName("atkBox");
-  for (var i = 0; i < boxes.length; i++) {
-      //Set position for each box
-      boxes[i].style.left = 100*i+"px";
-      //Set onClick for each square
-        //squares[tileNum].addEventListener("click", ClickSquare);
-      console.log("moved box "+i);
+
+function rollit(numi){
+  rcr = Math.random()*100
+  switch (rn) {
+    case 1:
+      // Set 2RN  random rolls for hit and critrate
+      rch = (Math.random()*100 + Math.random()*100)/2
+      break
+    case 2:
+      if(chs[numi]<50){
+        // Set 1RN if ch is under 50
+        rch = Math.random()*100
+      }
+      else {
+        // Set 2RN  random rolls for hit rate
+        rch = (Math.random()*100 + Math.random()*100)/2
+      }
+      break
+    default:
+      // Set 1RN  random rolls for hit rate
+      rch = Math.random()*100
   }
 }
 
-function collectDefaultBoxes(){
-  aps[0] = document.getElementById("ap1").value*1
-  chs[0] = document.getElementById("ch1").value*1
-  crs[0] = document.getElementById("cr1").value*1
 
-  aps[1] = document.getElementById("ap2").value*1
-  chs[1] = document.getElementById("ch2").value*1
-  crs[1] = document.getElementById("cr2").value*1
-
-  aps[2] = document.getElementById("ap3").value*1
-  chs[2] = document.getElementById("ch3").value*1
-  crs[2] = document.getElementById("cr3").value*1
-
-  aps[3] = document.getElementById("ap4").value*1
-  chs[3] = document.getElementById("ch4").value*1
-  crs[3] = document.getElementById("cr4").value*1
-
-  console.log("changed all values")
-}
-
-function AddBox(){
+function AddBox(apob, chob, crob){
   boxcount += 1
 
   //Set container element
-  atksRowDiv = document.getElementById("atksRow");
+  atksRowDiv = document.getElementById("atkplace")
 
   //Create a new box squares for container
-  box = document.createElement("div");
-  box.className = "atkBox";
-  atksRowDiv.appendChild(box);
-  box.style.left = 100*boxcount+"px";
-  //document.getClassByID("squareDiv").style.left = 100*(i/7)+"px";
-  console.log(i);
+  box = document.createElement("div")
+  box.className = "atkBox"
+  box.id = "ab"+boxcount
+  atksRowDiv.appendChild(box)
+  //box.style.left = 100*boxcount+"px";
+  console.log("appended box "+box.id)
+
+  // Create the inputs there
+  bid = document.getElementById(box.id)
+
+  // create the title number
+  bh4 = document.createElement("h4")
+  bh4.innerHTML = boxcount+"."
+  bid.appendChild(bh4)
+
+  for(let g = 0; g < 3; g++){
+    binput = document.createElement("input")
+    binput.type = "number"
+    binput.className = "inputAtk"
+    switch (g) {
+      case 0:
+        binput.id = "ap"+boxcount
+        binput.value = apob
+        break
+      case 1:
+        binput.id = "ch"+boxcount
+        binput.value = chob
+        break
+      case 2:
+        binput.id = "cr"+boxcount
+        binput.value = crob
+        break
+    }
+    bid.appendChild(binput)
+  }
+}
+
+
+function AddDouble(){
+  collectBoxes()
+  bcx = boxcount-1
+  console.log("Quad Ap: "+aps[bcx]+"Chs: "+chs[bcx]+"Crs: "+crs[bcx])
+  AddBox(aps[bcx], chs[bcx], crs[bcx])
+}
+
+function AddQuadruple(){
+  collectBoxes()
+  bcx = boxcount-1
+  console.log("Quad Ap: "+aps[bcx]+"Chs: "+chs[bcx]+"Crs: "+crs[bcx])
+  AddBox(aps[bcx], chs[bcx], crs[bcx])
+  AddBox(aps[bcx], chs[bcx], crs[bcx])
+  AddBox(aps[bcx], chs[bcx], crs[bcx])
 }
 
 
@@ -247,6 +341,10 @@ function ClearBoxes(){
     atksRowDiv.firstChild.remove();
   }
   boxcount = 0
+  aps = []
+  chs = []
+  crs = []
+  document.getElementById("probCoverId").style.width = 0+"%";
 }
 
 
