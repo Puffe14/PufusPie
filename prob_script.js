@@ -21,11 +21,15 @@ function Loaded(){
   victimInputElmnt = document.getElementById("victiminputid");
   check2RN = document.getElementById("check2RNid")
   check250 = document.getElementById("check250id")
+  checkHideVI = document.getElementById("checkHideVIid")
   numOfSimsElmnt =  document.getElementById("numofsimsid")
   simInputElmnt = document.getElementById("simulationinputid")
   inputCrtmltElmnt = document.getElementById("inputCrtmltid")
+  vicInpDivElmnt = document.getElementById("victiminputdiv")
+
   numOfSimsElmnt.innerHTML = simCount
   simInputElmnt.values = simCount
+
 
   victimInputElmnt.onchange = function(event) {
     reader = new FileReader()
@@ -60,6 +64,17 @@ function Loaded(){
     }
     else{
       rn = 0
+    }
+  }
+
+  checkHideVI.onclick = function() {
+    if(checkHideVI.checked == true){
+      vicInpDivElmnt.style.display = "none"
+      console.log("Victim input hidden")
+    }
+    else{
+      vicInpDivElmnt.style.display = "block"
+      console.log("Victim input unhidden")
     }
   }
 
@@ -116,6 +131,9 @@ function CalcAtkSim() {
   deadElmnt = document.getElementById("totLpId");
   probCoverElmnt = document.getElementById("probCoverId");
   simTxtElmnt = document.getElementById("simulationrestxtid");
+  probCoverElmnt = document.getElementById("probCoverId");
+
+  probCoverElmnt.style.width = 0+"%";
   collectBoxes()
 
   //reset everything when the button is clicked
@@ -220,7 +238,7 @@ function CalcAtkSim() {
     }
   }
 
-  probCoverElmnt = document.getElementById("probCoverId");
+
 
   chanceElmnt.innerHTML = killCh
   simTxtElmnt.innerHTML = simText
