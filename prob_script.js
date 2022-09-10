@@ -13,6 +13,7 @@ rch = Math.random()*100
 rcr = Math.random()*100
 rn = 0
 
+var checkDontRound
 
 
 function Loaded(){
@@ -22,6 +23,7 @@ function Loaded(){
   check2RN = document.getElementById("check2RNid")
   check250 = document.getElementById("check250id")
   checkHideVI = document.getElementById("checkHideVIid")
+  checkDontRound = document.getElementById("checkDontRoundDownid")
   numOfSimsElmnt =  document.getElementById("numofsimsid")
   simInputElmnt = document.getElementById("simulationinputid")
   inputCrtmltElmnt = document.getElementById("inputCrtmltid")
@@ -100,7 +102,7 @@ function CalcAtkOld() {
     totalChance = totalChance*(document.getElementById("ch"+o).value*0.01)
   }
   chanceElmnt = document.getElementById("totChId");
-  if(totalChance>=0.01){chanceElmnt.innerHTML = Math.floor(totalChance*100);}
+  if(totalChance>=1){chanceElmnt.innerHTML = Math.floor(totalChance*100);}
   else{chanceElmnt.innerHTML = Math.floor(totalChance*1000000)/1000000;}
   //Calculate life points remaining form total attack points
   totalAp = 0
@@ -228,7 +230,9 @@ function CalcAtkSim() {
   chanceElmnt = document.getElementById("totChId");
 
   for(l=0;l<simRes.length;l++){
-    midperc = Math.floor((simRes[l]/allAps.length)*100)
+    midperc = (simRes[l]/allAps.length)*100
+    if(checkDontRound.checked == false){midperc = Math.floor(midperc)}
+
     if(simAvPos[l]>=lp){
       simText += " |"+simAvPos[l]+": "+midperc+"%| " + "\n"
       killCh += midperc
