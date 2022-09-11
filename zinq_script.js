@@ -24,6 +24,7 @@ function Loaded(){
       checkSAB = document.getElementById("checkSwapAB")
       checkBA = document.getElementById("checkBtnAnswer")
       checkSZ = document.getElementById("checkShowZelf")
+      checkFC = document.getElementById("checkFlash")
       zface = document.getElementById("imgZelfFace")
 
   //read and add all lines from txt file to the zelfsList array
@@ -144,9 +145,11 @@ function checkForAnswer(){
 
     if(zll > 0){
       pickQuestion()
+      flashColor("green", 1000/3)
     }
     else {
       zquestion.innerHTML = "You did it!"
+      flashColor("blue", 1500)
     }
 
     yanswer.value = ""
@@ -155,6 +158,9 @@ function checkForAnswer(){
     ur = (Math.floor((uc/ut)*1000))/10
     console.log(uc+"/"+ut+", "+ur+"%")
     document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
+  }
+  else if (checkBA.checked){
+    flashColor("red", 1000/3)
   }
 }
 
@@ -168,6 +174,7 @@ function skipQuestion(){
     console.log(uc+"/"+ut+", "+ur+"%")
     document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
   }
+  flashColor("yellow", 1000/5)
 }
 
 function showAnswer(){
@@ -176,4 +183,13 @@ function showAnswer(){
 
 function debugBtn(){
   console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
+}
+
+function flashColor(fclr, ftime){
+  if(checkFC.checked!=true){
+    document.body.style.backgroundColor = fclr
+    setTimeout(function(){
+      document.body.style.backgroundColor = "gray"
+    }, ftime);
+  }
 }
