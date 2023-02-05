@@ -63,15 +63,19 @@ function Loaded(){
     }
   }
 
+  //script for button for answers checkbox
   checkBA.onclick = function() {
-    if(checkBA.checked == true){
-      yanswer.oninput = ""
+    if(checkBA.checked == false){
+      yanswer.oninput = checkForAnswer
+      console.log("manual answer")
     }
     else{
-      yanswer.oninput = "checkForAnswer()"
+      yanswer.oninput = ""
+      console.log("auto answer")
     }
   }
 
+  //script for show Zelf checkbox
   checkSZ.onclick = function() {
     if(checkSZ.checked == true){
       //zface.src = ""
@@ -111,6 +115,9 @@ function listZelfsList(){
 
 function resetZelfsList(){
   zelfsList = []
+  uc, ut, ur = 0
+  zquestion.innerHTML = "My list has been reset."
+  document.getElementById("scorep").innerHTML = "Score: 0, 0%"
 }
 
 
@@ -151,13 +158,14 @@ function checkForAnswer(){
       zquestion.innerHTML = "You did it!"
       flashColor("blue", 1500)
     }
-
-    yanswer.value = ""
-    uc += 1
-    ut = uc+uw
-    ur = (Math.floor((uc/ut)*1000))/10
-    console.log(uc+"/"+ut+", "+ur+"%")
-    document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
+    setTimeout(function(){
+      yanswer.value = ""
+      uc += 1
+      ut = uc+uw
+      ur = (Math.floor((uc/ut)*1000))/10
+      console.log(uc+"/"+ut+", "+ur+"%")
+      document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
+    }, 100);
   }
   else if (checkBA.checked){
     flashColor("red", 1000/3)
@@ -181,9 +189,7 @@ function showAnswer(){
   zquestion.innerHTML = "It's: "+ya
 }
 
-function debugBtn(){
-  console.log(zll) //(yanswer.value+" ans---true "+ya+", "+nrnd)
-}
+
 
 function flashColor(fclr, ftime){
   if(checkFC.checked!=true){
@@ -193,3 +199,40 @@ function flashColor(fclr, ftime){
     }, ftime);
   }
 }
+
+
+///////////////
+
+//script for Close/Open Options button
+function optionDisplay(){
+  var optdisbtn = document.getElementById('displaybtn')
+  var menudivs = document.getElementsByClassName('menu')
+  console.log(menudivs[0].style.display+" "+menudivs.length)
+
+  //hide all members of menu divs
+  if(menudivs[0].style.display != 'none'){
+   for(i=0; i<menudivs.length; i++){
+    menudivs[i].style.display = 'none'
+   }
+   optdisbtn.innerHTML = "Show Options"
+   optdisbtn.style.borderColor = "pink"
+   console.log("all options set to hidden")
+  }
+
+  //show all members of menu divs
+  else{
+    for(i=0; i<menudivs.length; i++){
+      menudivs[i].style.display = 'flex'
+    }
+   //display change when closed
+   optdisbtn.innerHTML = "Close Options"
+   optdisbtn.style.borderColor = "purple"
+   console.log("all options set to display")
+  }
+}
+
+
+//debugging function
+function debugBtn(){
+    console.log(yanswer.oninput) //(yanswer.value+" ans---true "+ya+", "+nrnd)
+  }

@@ -1,4 +1,3 @@
-
 body{
   background-color: gray;
   display: flex;
@@ -6,6 +5,7 @@ body{
   margin-left: 5%;
   margin-right: 5%;
 }
+
 nav{
   display: flex;
   flex-direction: row;
@@ -17,15 +17,20 @@ nav{
   margin-bottom: 0%;
   border: 3px dotted gray;
 }
+
 p{
   color: white;
   font-size: 35px;
 }
+
 a{
     /*text-decoration: none;*/
     color:lightgreen;
-    font-size: 30px;
+    font-size: 50px;
+    margin-bottom: 2%;
+    align-self: center;
 }
+
 button{
   text-align: left;
   border: 5px solid green;
@@ -33,6 +38,7 @@ button{
   margin: 1%;
   margin-right: auto;
   font-size: 100%;
+  font-family: cursive;
 }
 
 h1{
@@ -42,6 +48,31 @@ h1{
   font-size: 900%;
 }
 
+hr {
+  width: 100%;
+  color: purple;
+  height: 3px;
+  border-width: 0;
+  background-color: purple;
+  margin-top: 1%;
+}
+
+input{
+  font-size: 30px;
+}
+
+label{
+  border-top: 2px solid black;
+  padding-bottom: 1%;
+  color: purple;
+  font-size: 35px;
+
+}
+
+
+
+
+
 .boxydiv{
   padding-left: 5%;
   padding-right: 5%;
@@ -49,11 +80,64 @@ h1{
   border: 3px solid lightblue;
 }
 
+.menu{
+  display: block;
+}
+
+.optioncbox{
+  transform: scale(2.5);
+  position: relative;
+  float: right;
+  margin-top: 15px;
+  margin-right: 1%;
+}
+
+.startbtn{
+  border: 5px solid blue;
+  border-radius: 5%;
+  font-size: 25px;
+}
+
+
+
+
+
 #imgZelfFace{
-  width: 25%;
-  height: 25%;
+  width: 20%;
+
+  align-self: center;
+}
+
+#zquestion{
+  font-size:40px;
+  align-self: center;
+  margin-top: 20px;
 }
 
 #yanswer {
-    font-size:200%;
+  font-size:220%;
+  width: 100%;
+  align-self: center;
+}
+
+#optdiv{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 3%;
+  margin: 1%;
+  border: 3px solid pink;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+}
+
+#displaybtn{
+  text-align: center;
+  border: 5px solid purple;
+  margin: 2%;
+  margin-left: 4%;
+  margin-right: auto;
+  font-size: 100%;
+  border-radius: 50%;
+  transform: scale(1.5);
 }
