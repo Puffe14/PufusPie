@@ -25,6 +25,7 @@ function Loaded(){
       checkBA = document.getElementById("checkBtnAnswer")
       checkSZ = document.getElementById("checkShowZelf")
       checkFC = document.getElementById("checkFlash")
+      checkLSC = document.getElementById("checkSpeChars")
       zface = document.getElementById("imgZelfFace")
 
   //read and add all lines from txt file to the zelfsList array
@@ -61,6 +62,8 @@ function Loaded(){
         }
       }
     }
+    //display the inquirer on loading file
+    inquirerDisplay()
   }
 
   //script for button for answers checkbox
@@ -92,6 +95,8 @@ function Loaded(){
       console.log("face on")
     }
   }
+  optionDisplay()
+  listscDisplay()
 }
 
 ////////////////////////////////////////////////
@@ -115,7 +120,7 @@ function listZelfsList(){
 
 function resetZelfsList(){
   zelfsList = []
-  uc, ut, ur = 0
+  uc = ut = ur = uw = 0
   zquestion.innerHTML = "My list has been reset."
   document.getElementById("scorep").innerHTML = "Score: 0, 0%"
 }
@@ -181,8 +186,8 @@ function skipQuestion(){
     ur = (Math.floor((uc/ut)*1000))/10
     console.log(uc+"/"+ut+", "+ur+"%")
     document.getElementById("scorep").innerHTML = "Score: "+uc+"/"+ut+", "+ur+"%"
+    flashColor("yellow", 1000/5)
   }
-  flashColor("yellow", 1000/5)
 }
 
 function showAnswer(){
@@ -230,6 +235,48 @@ function optionDisplay(){
    console.log("all options set to display")
   }
 }
+
+
+function inquirerDisplay(){
+  var inqdivs = document.getElementsByClassName('inq')
+  console.log(inqdivs[0].style.display+" "+inqdivs.length)
+  /*
+  //hide all members of inquirer divs
+  if(inqdivs[0].style.display != 'none'){
+   for(i=0; i<inqdivs.length; i++){
+    inqdivs[i].style.display = 'none'
+   }
+   console.log("inquirer set to hidden")
+  }
+
+
+  //show all members of inquirer divs
+  else{ */
+    for(i=0; i<inqdivs.length; i++){
+      inqdivs[i].style.display = 'block'
+    }
+   console.log("inquirer set to display")
+  //}
+}
+
+
+//script for liset special characters button
+function listscDisplay(){
+  var listscdiv = document.getElementById('listscdiv')
+
+  //hide list of characters
+  if(listscdiv.style.display != 'none'){
+    listscdiv.style.display = 'none';
+    console.log("list set to hidden");
+  }
+
+  //show list of characters
+  else{
+      listscdiv.style.display = 'flex';
+      console.log("list set to show");
+    }
+}
+
 
 
 //debugging function

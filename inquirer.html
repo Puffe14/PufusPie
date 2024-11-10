@@ -13,6 +13,8 @@
     </header>
 
     <a href="index.html" class="pagelink">Return to Main Page</a>
+
+
     <hr>
     <button type="button" id="displaybtn" onclick="optionDisplay()">Close Options</button>
 
@@ -22,40 +24,45 @@
       <label> Don't show Zelf <input type="checkbox" id="checkShowZelf" class="optioncbox"> </label>
       <label> Press a button to confirm your answer <input type="checkbox" id="checkBtnAnswer" class="optioncbox"> </label>
       <label> Don't flash colors <input type="checkbox" id="checkFlash" class="optioncbox"> </label>
-    </div>
-
-    <div class="menu">
-      <h2 id=inquirer_header>Select a file for Zelf to make inquiries from.</h2>
-      <input type="file" name="file" id="inq_file" accept=".txt">
+      <label> List special characters <input type="checkbox" id="checkSpeChars" class="optioncbox" onclick="listscDisplay()"> </label>
     </div>
 
     <div class="menu">
       <button type="button" onclick="listZelfsList()">Show Zelf's current list</button>
       <button type="button" onclick="resetZelfsList()">Reset Zelf's list</button>
-      <button type="button" onclick="pickQuestion()" class="startbtn">Start Zelf's inquiry</button>
     </div>
 
     <hr>
 
-    <div>
+    <div class="fileInput">
+      <h2 id=inquirer_header>Select a file for Zelf to make inquiries from.</h2>
+      <input type="file" name="file" id="inq_file" accept=".txt">
+    </div>
+    <button type="button" onclick="pickQuestion()" class="startbtn">Start Zelf's inquiry</button>
+
+    <hr>
+
+    <div class="inq">
       <p id="scorep">Score: 0, 0%</p>
       <h2>Question:</h2>
       <p id="zquestion">???</p>
     </div>
 
-    <img src="zelf_face_img.png" alt="the face of a Blue Haired Lib" id="imgZelfFace"></img>
-    <div>
+    <img src="zelf_face_img.png" alt="the face of a Blue Haired Lib" id="imgZelfFace" class="inq"></img>
+    <div class="inq">
       <h2>Answer:</h2>
       <input type="text" id="yanswer" oninput="checkForAnswer()">
     </div>
 
-    <div>
+    <div class="inq">
       <button type="button" onclick="skipQuestion()">Skip Question</button>
       <button type="button" onclick="checkForAnswer()">Answer</button>
       <button type="button" onclick="showAnswer()">Answer?</button>
     </div>
 
-
+    <div class="listsc" id="listscdiv">
+      <p> Ɛ Ɔ Ʌ Ə Ŋ  ɛ ɔ ʌ ə ŋ　| ・ 、 ー 「 」 | Å Ä Ö  å ä ö  <br> É È Ê Á À Ç é è ê á à ç ï î ô ù œ æ</p>
+    </div>
     <!-- <button type="button" onclick="debugBtn()">debug</button> -->
   </body>
 </html>

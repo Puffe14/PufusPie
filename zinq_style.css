@@ -81,7 +81,7 @@ label{
 }
 
 .menu{
-  display: block;
+  display: flex;
 }
 
 .optioncbox{
@@ -99,8 +99,22 @@ label{
 }
 
 
+.inq{
+  display: none;
+}
 
+.listsc{
+  display: none;
+}
 
+.fileInput{
+  border: 5px solid green;
+  background-color: lightgray;
+  padding: 1%;
+  font-size: 25px;
+  margin-left: 0;
+  margin-right: auto;
+}
 
 #imgZelfFace{
   width: 20%;
@@ -125,7 +139,7 @@ label{
   padding-right: 5%;
   padding-bottom: 3%;
   margin: 1%;
-  border: 3px solid pink;
+  border: 5px solid pink;
   display: flex;
   flex-direction: column;
   background-color: lightgray;
